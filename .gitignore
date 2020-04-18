@@ -1,6 +1,7 @@
 .DS_Store
 node_modules
 Contents/
+src/indexedPageSections.js
 src/indexedFiles.js
 src/docs
 *.docset

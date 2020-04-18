@@ -3,6 +3,7 @@ var fs = require('fs');
 var flatten = require('lodash.flatten');
 var config = require('./config');
 var indexedFiles = require('./indexedFiles');
+var indexedPageSections = require('./indexedPageSections');
 var version = fs.readFileSync(__dirname+'/version', 'utf8').trim();
 
 // this assumes build.sh has been run, and the react-native docs fetched into
@@ -38,7 +39,7 @@ function getData() {
         return res;
   });
 
-  return flatten(res);
+  return flatten(res).concat(indexedPageSections);
 }
 
 module.exports = getData;

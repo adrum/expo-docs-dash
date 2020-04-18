@@ -32,6 +32,9 @@ cd ../../../
 # create data file from base index page
 node src/createSectionJSON.js
 
+# Add page sections
+node src/createPageSectionJSON.js
+
 # change the documentation markup layout a bit to fit dash's small window
 node src/modifyDocsHTML.js
 
@@ -39,7 +42,8 @@ node src/modifyDocsHTML.js
 node src/index.js
 
 # Create plist
-cat > Contents/Info.plist << EOF <?xml version="1.0" encoding="UTF-8"?>
+cat > Contents/Info.plist << EOF
+<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
@@ -49,6 +53,8 @@ cat > Contents/Info.plist << EOF <?xml version="1.0" encoding="UTF-8"?>
 	<string>Expo</string>
 	<key>DocSetPlatformFamily</key>
 	<string>expo</string>
+    <key>DashDocSetFamily</key>
+    <string>dashtoc</string>
 	<key>dashIndexFilePath</key>
 	<string>expo/versions/$VERSION/index.html</string>
 	<key>isDashDocset</key>
