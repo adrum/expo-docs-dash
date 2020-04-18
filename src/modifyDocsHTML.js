@@ -35,8 +35,8 @@ indexedFiles.forEach(function(array, index) {
     // });
 
     $('header').parent().remove();
-    $('footer').parent().remove();
-    // $('nav').parent().parent().remove();
+    $('footer').remove();
+    $('nav').parent().remove();
 
     // $('.container').attr('style', 'min-width:inherit;padding-top:0');
     // $('.wrap').attr('style', 'width:inherit;');
