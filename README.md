@@ -1,4 +1,4 @@
-# [Expo](http://facebook.github.io/react-native/) documentation for [Dash](http://kapeli.com/dash)
+# [Expo](https://docs.expo.io/) documentation for [Dash](http://kapeli.com/dash)
 
 
 ## Installation in Dash
@@ -34,14 +34,9 @@ We have to slightly modify the Expo docs to make it easier to format and parse f
 
 1. Clone this repo: git clone https://github.com/adrum/expo-docs-dash
 2. npm i
-3. chmod +x build.sh
-3. npm run build
-
-Clone this repo, `cd` into it and do:
-
-    npm install
-    chmod +x build.sh
-    ./build.sh
+3. modify `src/version` with the current version
+4. chmod +x build.sh
+5. npm run build
 
 The script will:
 
