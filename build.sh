@@ -17,12 +17,16 @@ cd Documents
 # wget -m -p -E -k -np http://docs.expo.io/
 wget -m -p -E -k -np http://127.0.0.1:8000 && mv 127.0.0.1:8000 docs.expo.io
 
-find ./docs.expo.io/versions -mindepth 1 -maxdepth 1 -type d -not -name $VERSION -exec echo rm -rf '{}' \;
 
 # move it around a bit
 mkdir -p expo
 mv docs.expo.io/* ./expo/
 rm -rf docs.expo.io
+
+# Cleanup some files
+find ./expo/versions -mindepth 1 -maxdepth 1 -type d -not -name $VERSION -exec rm -rf '{}' \;
+rm ./expo/versions/index.html ./expo/robots.txt ./expo/index.html
+
 cd ../../../
 
 # create data file from base index page
@@ -33,6 +37,25 @@ node src/modifyDocsHTML.js
 
 # read the previously fetched doc site and parse it into sqlite
 node src/index.js
+
+# Create plist
+cat > Contents/Info.plist << EOF <?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CFBundleIdentifier</key>
+	<string>expo</string>
+	<key>CFBundleName</key>
+	<string>Expo</string>
+	<key>DocSetPlatformFamily</key>
+	<string>expo</string>
+	<key>dashIndexFilePath</key>
+	<string>expo/versions/$VERSION/index.html</string>
+	<key>isDashDocset</key>
+	<true/>
+</dict>
+</plist>
+EOF
 
 # bundle up!
 mkdir Expo.docset
