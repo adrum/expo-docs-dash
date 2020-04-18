@@ -8,11 +8,10 @@
   },
   "main": "src/index.js",
   "dependencies": {
-    "cheerio": "^0.19.0",
+    "cheerio": "^0.22.0",
     "lodash.flatten": "^3.0.2",
-    "sequelize": "^3.30.4",
-    "snyk": "^1.33.0",
-    "sqlite3": "*"
+    "sequelize": "^5.21.6",
+    "sqlite3": "^4.1.1"
   },
   "keywords": [
     "Expo",
@@ -33,6 +32,5 @@
   "bugs": {
     "url": "https://github.com/adrum/expo-dash/issues"
   },
-  "homepage": "https://github.com/adrum/expo-dash",
-  "snyk": true
+  "homepage": "https://github.com/adrum/expo-dash"
 }
