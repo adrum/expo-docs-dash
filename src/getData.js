@@ -25,7 +25,7 @@ function getData() {
             // names.push(name.trim().substring(0, name.length - 2));
         });
 
-        var url = config.name + config.folder + array.name + '.html#';
+        var url = `${config.name}${config.folder}${version}/${array.name}.html#`
 
         var res = names.map(function(n, i) {
             return {
