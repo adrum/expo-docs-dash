@@ -1,0 +1,77 @@
+From 9fdf076498f9d90db972da67c13e3406d63393fc Mon Sep 17 00:00:00 2001
+From: Austin Drummond <adrum0x7@gmail.com>
+Date: Sat, 18 Apr 2020 13:12:12 -0400
+Subject: [PATCH] target specific elements
+
+---
+ docs/components/DocumentationSidebar.js      | 2 +-
+ docs/components/DocumentationSidebarGroup.js | 8 ++++----
+ docs/components/DocumentationSidebarLink.js  | 2 +-
+ docs/components/DocumentationSidebarTitle.js | 2 +-
+ 4 files changed, 7 insertions(+), 7 deletions(-)
+
+diff --git a/docs/components/DocumentationSidebar.js b/docs/components/DocumentationSidebar.js
+index 1389a043ae..db2aeadadd 100644
+--- a/docs/components/DocumentationSidebar.js
++++ b/docs/components/DocumentationSidebar.js
+@@ -68,7 +68,7 @@ export default class DocumentationSidebar extends React.Component {
+     }
+ 
+     return (
+-      <div className={STYLES_SECTION_CATEGORY} key={`category-${info.name}`}>
++      <div className={`sub-section {STYLES_SECTION_CATEGORY}`} key={`category-${info.name}`}>
+         {titleElement}
+         {postElements}
+       </div>
+diff --git a/docs/components/DocumentationSidebarGroup.js b/docs/components/DocumentationSidebarGroup.js
+index f561d017f8..da9b38c8d7 100644
+--- a/docs/components/DocumentationSidebarGroup.js
++++ b/docs/components/DocumentationSidebarGroup.js
+@@ -143,14 +143,14 @@ export default class DocumentationSidebarGroup extends React.Component {
+ 
+   render() {
+     return (
+-      <div>
++      <div className="section">
+         <a
+-          className={`${STYLES_TITLE} ${this.state.isOpen ? STYLES_ACTIVE : STYLES_DEFAULT}`}
++          className={`section-header ${STYLES_TITLE} ${this.state.isOpen ? STYLES_ACTIVE : STYLES_DEFAULT}`}
+           onClick={this._toggleIsOpen}>
+           {this.props.info.name}
+-          <Arrow isOpen={this.state.isOpen} />
++          <Arrow isOpen={true || this.state.isOpen} />
+         </a>
+-        {this.state.isOpen ? (
++        {true || this.state.isOpen ? (
+           <div className={STYLES_SIDEBAR_INDENT}>{this.props.children}</div>
+         ) : null}
+       </div>
+diff --git a/docs/components/DocumentationSidebarLink.js b/docs/components/DocumentationSidebarLink.js
+index 1c0be2767f..372713718e 100644
+--- a/docs/components/DocumentationSidebarLink.js
++++ b/docs/components/DocumentationSidebarLink.js
+@@ -81,7 +81,7 @@ export default class DocumentationSidebarLink extends React.Component {
+       <NextLink href={this.props.info.href} as={this.props.info.as || this.props.info.href}>
+         <a
+           {...customDataAttributes}
+-          className={`${STYLES_LINK} ${this.isSelected() ? STYLES_ACTIVE : STYLES_DEFAULT}`}>
++          className={`section-link ${STYLES_LINK} ${this.isSelected() ? STYLES_ACTIVE : STYLES_DEFAULT}`}>
+           {this.props.children}
+         </a>
+       </NextLink>
+diff --git a/docs/components/DocumentationSidebarTitle.js b/docs/components/DocumentationSidebarTitle.js
+index d70b3cc208..949bd0ce5b 100644
+--- a/docs/components/DocumentationSidebarTitle.js
++++ b/docs/components/DocumentationSidebarTitle.js
+@@ -100,7 +100,7 @@ export default class DocumentationSidebarTitle extends React.Component {
+   render() {
+     if (!this.props.info.href) {
+       return (
+-        <div className={STYLES_TITLE}>
++        <div className={`sub-section-header ${STYLES_TITLE}`}>
+           {this.props.children}
+         </div>
+       );
+-- 
+2.19.2
+

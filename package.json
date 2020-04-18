@@ -1,0 +1,38 @@
+{
+  "name": "expo-docs-dash",
+  "version": "1.0.0",
+  "description": "Expo Documentation Source for Dash (http://kapeli.com/dash)",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/adrum/expo-docs-dash"
+  },
+  "main": "src/index.js",
+  "dependencies": {
+    "cheerio": "^0.19.0",
+    "lodash.flatten": "^3.0.2",
+    "sequelize": "^3.30.4",
+    "snyk": "^1.33.0",
+    "sqlite3": "*"
+  },
+  "keywords": [
+    "Expo",
+    "ReactNative",
+    "React",
+    "Reactjs",
+    "Facebook",
+    "javascript",
+    "iOS",
+    "android"
+  ],
+  "devDependencies": {},
+  "scripts": {
+    "build": "./build.sh"
+  },
+  "author": "adrum",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/adrum/expo-dash/issues"
+  },
+  "homepage": "https://github.com/adrum/expo-dash",
+  "snyk": true
+}
