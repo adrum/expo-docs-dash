@@ -46,7 +46,7 @@ indexedFiles.forEach((srcPage)=>{
         page.path = `${config.name}${config.folder}${version}/${srcPage.name}.html#//apple_ref/Section/${encodeURIComponent(dashAnchorPath)}`;
         keyed[page.name] = page;
 
-        $(elem).after( `<a name="//apple_ref/Section/${encodeURIComponent(dashAnchorPath)}" class="dashAnchor"></a>`);
+        $(elem).before( `<a name="//apple_ref/Section/${encodeURIComponent(dashAnchorPath)}" class="dashAnchor"></a>`);
         pageNamesArray.push(page);
     });
 
