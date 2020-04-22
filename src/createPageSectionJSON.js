@@ -32,15 +32,14 @@ indexedFiles.forEach((srcPage)=>{
         var dashAnchorPath = title;
 
         var page = {
-            name: `${title} - ${pageTitle}`,
+            name: `${pageTitle} - ${title}`,
             type: 'Section',
-
         };
 
         if (keyed.hasOwnProperty(page.name)) {
             var text = $(elem).prevAll('h1').first().text()
             dashAnchorPath = `${text}: ${title}`,
-            page.name = `${dashAnchorPath} - ${pageTitle}`;
+            page.name = `${pageTitle} - ${dashAnchorPath}`;
         }
 
         page.path = `${config.name}${config.folder}${version}/${srcPage.name}.html#//apple_ref/Section/${encodeURIComponent(dashAnchorPath)}`;
