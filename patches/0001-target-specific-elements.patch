@@ -1,4 +1,4 @@
-From 9fdf076498f9d90db972da67c13e3406d63393fc Mon Sep 17 00:00:00 2001
+From 9e611e3d905d2fd369ec5302be0f24c23889f694 Mon Sep 17 00:00:00 2001
 From: Austin Drummond <adrum0x7@gmail.com>
 Date: Sat, 18 Apr 2020 13:12:12 -0400
 Subject: [PATCH] target specific elements
@@ -11,7 +11,7 @@ Subject: [PATCH] target specific elements
  4 files changed, 7 insertions(+), 7 deletions(-)
 
 diff --git a/docs/components/DocumentationSidebar.js b/docs/components/DocumentationSidebar.js
-index 1389a043ae..db2aeadadd 100644
+index 1389a043ae..537e4179c7 100644
 --- a/docs/components/DocumentationSidebar.js
 +++ b/docs/components/DocumentationSidebar.js
 @@ -68,7 +68,7 @@ export default class DocumentationSidebar extends React.Component {
@@ -19,7 +19,7 @@ index 1389a043ae..db2aeadadd 100644
  
      return (
 -      <div className={STYLES_SECTION_CATEGORY} key={`category-${info.name}`}>
-+      <div className={`sub-section {STYLES_SECTION_CATEGORY}`} key={`category-${info.name}`}>
++      <div className={`sub-section ${STYLES_SECTION_CATEGORY}`} key={`category-${info.name}`}>
          {titleElement}
          {postElements}
        </div>
@@ -73,5 +73,5 @@ index d70b3cc208..949bd0ce5b 100644
          </div>
        );
 -- 
-2.19.2
+2.28.0
 
