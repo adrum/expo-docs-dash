@@ -24,19 +24,20 @@ We have to slightly modify the Expo docs to make it easier to format and parse f
 ### Expo Docs Setup Locally
 
 1. Clone the Expo repo: git clone https://github.com/expo/expo
-2. Apply the patches in this repo's patches folder to that repo.
-3. cd docs
-4. npm i
-5. npm run export && npm run export-server
+1. npm run setup:docs
+1. Apply the patches in this repo's patches folder to that repo.
+1. cd docs
+1. npm i
+1. npm run export && npm run export-server
 
 
 ### Build Expo Dash Docs
 
 1. Clone this repo: git clone https://github.com/adrum/expo-docs-dash
-2. npm i
-3. modify `src/version` with the current version
-4. chmod +x build.sh
-5. npm run build
+1. npm i
+1. modify `src/version` with the current version
+1. chmod +x build.sh
+1. npm run build
 
 The script will:
 
