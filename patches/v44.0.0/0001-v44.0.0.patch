@@ -1,0 +1,28 @@
+From 7f6757ee937c53c9e1d7156d002268e82af39eb6 Mon Sep 17 00:00:00 2001
+From: Austin Drummond <adrum0x7@gmail.com>
+Date: Sat, 22 Apr 2023 23:41:37 -0400
+Subject: [PATCH] v44.0.0
+
+---
+ docs/components/DocumentationSidebarTitle.tsx | 6 +++++-
+ 1 file changed, 5 insertions(+), 1 deletion(-)
+
+diff --git a/docs/components/DocumentationSidebarTitle.tsx b/docs/components/DocumentationSidebarTitle.tsx
+index 7c3b02660b..da50822d76 100644
+--- a/docs/components/DocumentationSidebarTitle.tsx
++++ b/docs/components/DocumentationSidebarTitle.tsx
+@@ -26,6 +26,10 @@ type Props = {
+ 
+ export default class DocumentationSidebarTitle extends React.Component<Props, any> {
+   render() {
+-    return <div css={STYLES_TITLE}>{this.props.children}</div>;
++    return (
++      <div className="sub-section-header" css={STYLES_TITLE}>
++        {this.props.children}
++      </div>
++    );
+   }
+ }
+-- 
+2.40.0
+

@@ -4,7 +4,7 @@ var config = require('./config');
 
 // get base file to iterate over
 var version = fs.readFileSync(__dirname+'/version', 'utf8').trim();
-var basePath = __dirname + `/../Contents/Resources/Documents/${config.name}${config.folder}${version}/${config.index}`;
+var basePath = __dirname + `/../Contents/Resources/Documents/${config.name}${config.folder}${version}${config.index}`;
 var baseSrc = fs.readFileSync(basePath, 'utf8');
 var $ = cheerio.load(baseSrc);
 var pageNamesArray = [];
@@ -16,10 +16,18 @@ $section.each(function(i, elem){
 
     // TODO: create a better config pointer
     var $sectionHeader = $(this).children('.'+config.sectionHeaderClass).text();
+    if ($sectionHeader.indexOf(".css") !== -1) {
+        $sectionHeader = $sectionHeader.substring(0, $sectionHeader.indexOf(".css"));
+    }
+
     var $subSection = $(this).find('.'+config.subSectionClass);
+
+    if ($subSection.length === 0) {
+        $subSection = $(elem);
+    }
     $subSection.each(function(i, elem){
-        var $subSectionHeader = $(this).children('.'+config.subSectionHeaderClass).text();
-        var $sectionLink = $(this).children('a'+'.'+config.sectionLinkClass);
+        var $subSectionHeader = $(elem).children('.'+config.subSectionHeaderClass).text();
+        var $sectionLink = $(elem).find('a'+'.'+config.sectionLinkClass);
 
         $sectionLink.each(function(i, elem){
             var page = {};
@@ -33,6 +41,10 @@ $section.each(function(i, elem){
             page.name = $(this).attr('href').substring(0, $(this).attr('href').length - 5);
 
             if(config.ignorePage.pagesArray.indexOf(excludeArray) !== -1) {
+                return;
+            }
+
+            if(page.name.startsWith('http') || page.name.startsWith('../')) {
                 return;
             }
 

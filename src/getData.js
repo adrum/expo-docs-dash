@@ -10,7 +10,7 @@ var version = fs.readFileSync(__dirname+'/version', 'utf8').trim();
 // Contents/Resources/Documents/react-native
 function getData() {
     var res = indexedFiles.map(function(array) {
-        var path = __dirname + `/../Contents/Resources/Documents/${config.name}${config.folder}${version}/${array.name}.html`;
+        var path = __dirname + `/../Contents/Resources/Documents/${config.name}${config.folder}${array.name}.html`;
         var src = fs.readFileSync(path, 'utf-8');
         var $ = cheerio.load(src);
 
@@ -22,11 +22,15 @@ function getData() {
 
             var name = $($(elem).contents()).text();
 
+            if (name.indexOf('.css') > -1) {
+                name = $($(elem).children('span')).first().text()
+            }
+
             names.push(name.trim());
             // names.push(name.trim().substring(0, name.length - 2));
         });
 
-        var url = `${config.name}${config.folder}${version}/${array.name}.html#`
+        var url = `${config.name}${config.folder}${array.name}.html#`
 
         var res = names.map(function(n, i) {
             return {

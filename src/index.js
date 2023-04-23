@@ -31,6 +31,8 @@ searchIndex.sync().then(function() {
       type: header.type,
       path: header.path
     });
-    si.save();
+    si.save().catch(function(e) {
+      // console.error(e)
+    });
   });
 });
