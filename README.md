@@ -1,6 +1,5 @@
 # [Expo](https://docs.expo.io/) documentation for [Dash](http://kapeli.com/dash)
 
-
 ## Installation in Dash
 
 **To install the Expo documentation in Dash, go to:**
@@ -23,17 +22,16 @@ We have to slightly modify the Expo docs to make it easier to format and parse f
 
 ### Expo Docs Setup Locally
 
-1. Clone the Expo repo: git clone https://github.com/expo/expo
+1. Clone the Expo repo: git clone <https://github.com/expo/expo>
 1. npm run setup:docs
 1. Apply the patches in this repo's patches folder to that repo.
 1. cd docs
-1. npm i
+1. yarn install
 1. npm run export && npm run export-server
-
 
 ### Build Expo Dash Docs
 
-1. Clone this repo: git clone https://github.com/adrum/expo-docs-dash
+1. Clone this repo: git clone <https://github.com/adrum/expo-docs-dash>
 1. npm i
 1. modify `src/version` with the current version
 1. chmod +x build.sh
@@ -41,7 +39,7 @@ We have to slightly modify the Expo docs to make it easier to format and parse f
 
 The script will:
 
-- Fetch the newest released Expo documentation from http://127.0.0.1:8000/.
+- Fetch the newest released Expo documentation from <http://127.0.0.1:8000/>.
 - Parse the doc site into a new SQLite database for Dash. The list of files are hardcoded. Please check `src/index.js` for more detail.
 - Bundle up the result in a Expo.docset.
 - GZip for Dash contribution
