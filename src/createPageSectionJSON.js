@@ -21,13 +21,13 @@ indexedFiles.forEach((srcPage)=>{
 
     $links.each(function(i, elem){
 
-        var anchor = $(elem).find('a.permalink');
+        var anchor = $(elem).find('a');
 
         var href = $(anchor).attr('href');
 
         href = href.split('#').pop();
 
-        var title = $(anchor).siblings('.permalink-child').text()
+        var title = $(anchor).children('span').first().text()
 
         var dashAnchorPath = title;
 
