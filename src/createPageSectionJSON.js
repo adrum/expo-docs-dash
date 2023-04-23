@@ -10,13 +10,13 @@ var keyed ={};
 
 var pageNamesArray = [];
 indexedFiles.forEach((srcPage)=>{
-    var basePageSrc = `${config.name}${config.folder}${version}/${srcPage.name}.html`;
+    var basePageSrc = `${config.name}${config.folder}${srcPage.name}.html`;
     var basePath = __dirname + `/../Contents/Resources/Documents/${basePageSrc}`;
     var baseSrc = fs.readFileSync(basePath, 'utf8');
 
     // get base file to iterate over
     var $ = cheerio.load(baseSrc);
-    var pageTitle = $('h1[data-heading]').first().text()
+    var pageTitle = $('h1').children('span').first().text();
     var $links = $('h2[data-heading]');
 
     $links.each(function(i, elem){
@@ -27,7 +27,7 @@ indexedFiles.forEach((srcPage)=>{
 
         href = href.split('#').pop();
 
-        var title = $(anchor).children('span').first().text()
+        var title = $(anchor).children('span:not([id])').first().text()
 
         var dashAnchorPath = title;
 
@@ -42,7 +42,7 @@ indexedFiles.forEach((srcPage)=>{
             page.name = `${pageTitle} - ${dashAnchorPath}`;
         }
 
-        page.path = `${config.name}${config.folder}${version}/${srcPage.name}.html#//apple_ref/Section/${encodeURIComponent(dashAnchorPath)}`;
+        page.path = `${config.name}${config.folder}${srcPage.name}.html#//apple_ref/Section/${encodeURIComponent(dashAnchorPath)}`;
         keyed[page.name] = page;
 
         $(elem).before( `<a name="//apple_ref/Section/${encodeURIComponent(dashAnchorPath)}" class="dashAnchor"></a>`);

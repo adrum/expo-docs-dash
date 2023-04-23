@@ -54,7 +54,7 @@ cat > Contents/Info.plist << EOF
     <key>DashDocSetFamily</key>
     <string>dashtoc</string>
 	<key>dashIndexFilePath</key>
-	<string>expo/versions/$VERSION/index.html</string>
+	<string>expo/versions/$VERSION.html</string>
 	<key>isDashDocset</key>
 	<true/>
 </dict>

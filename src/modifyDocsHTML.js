@@ -8,11 +8,11 @@ var version = fs.readFileSync(__dirname+'/version', 'utf8').trim();
 // browser screen
 indexedFiles.forEach(function(array, index) {
     //console.log(array);
-    var path = __dirname + `/../Contents/Resources/Documents/${config.name}${config.folder}${version}/${array.name}.html`;
+    var path = __dirname + `/../Contents/Resources/Documents/${config.name}${config.folder}${array.name}.html`;
     var src = fs.readFileSync(path, 'utf8');
     var $ = cheerio.load(src);
 
-    $online = `<!-- Online page at ${config.siteUrl}${config.folder}${version}/${array.name}.html -->`;
+    $online = `<!-- Online page at ${config.siteUrl}${config.folder}${array.name}.html -->`;
     if (src.indexOf($online) === -1) {
         $('html').prepend($online);
     }

@@ -1,0 +1,107 @@
+From 9af5afecfc9a19613648c1253b3445948c017355 Mon Sep 17 00:00:00 2001
+From: Austin Drummond <adrum0x7@gmail.com>
+Date: Sun, 23 Apr 2023 00:18:01 -0400
+Subject: [PATCH] v48.0.0
+
+---
+ docs/ui/components/Sidebar/SidebarCollapsible.tsx | 2 +-
+ docs/ui/components/Sidebar/SidebarGroup.tsx       | 2 +-
+ docs/ui/components/Sidebar/SidebarHead.tsx        | 2 +-
+ docs/ui/components/Sidebar/SidebarLink.tsx        | 1 +
+ docs/ui/components/Sidebar/SidebarTitle.tsx       | 2 +-
+ docs/ui/components/Sidebar/VersionSelector.tsx    | 1 +
+ docs/ui/components/Text/index.tsx                 | 2 +-
+ 7 files changed, 7 insertions(+), 5 deletions(-)
+
+diff --git a/docs/ui/components/Sidebar/SidebarCollapsible.tsx b/docs/ui/components/Sidebar/SidebarCollapsible.tsx
+index 75e99cbefd..b4bf3a6b10 100644
+--- a/docs/ui/components/Sidebar/SidebarCollapsible.tsx
++++ b/docs/ui/components/Sidebar/SidebarCollapsible.tsx
+@@ -56,7 +56,7 @@ export function SidebarCollapsible(props: Props) {
+     ? window.sidebarState[info.name]
+     : containsActiveChild || info.expanded;
+ 
+-  const [isOpen, setOpen] = useState(initState);
++  const [isOpen, setOpen] = useState(true);
+ 
+   useEffect(() => {
+     if (containsActiveChild) {
+diff --git a/docs/ui/components/Sidebar/SidebarGroup.tsx b/docs/ui/components/Sidebar/SidebarGroup.tsx
+index 1f09aad92a..b05aff95ea 100644
+--- a/docs/ui/components/Sidebar/SidebarGroup.tsx
++++ b/docs/ui/components/Sidebar/SidebarGroup.tsx
+@@ -7,7 +7,7 @@ import { SidebarTitle, SidebarLink, SidebarSection } from './index';
+ import { NavigationRoute } from '~/types/common';
+ 
+ export const SidebarGroup = ({ route, parentRoute }: SidebarNodeProps) => (
+-  <div css={[STYLES_SECTION_CATEGORY]}>
++  <div className="section" css={[STYLES_SECTION_CATEGORY]}>
+     {!shouldSkipTitle(route, parentRoute) && (
+       <SidebarTitle>{route.sidebarTitle || route.name}</SidebarTitle>
+     )}
+diff --git a/docs/ui/components/Sidebar/SidebarHead.tsx b/docs/ui/components/Sidebar/SidebarHead.tsx
+index a8d34dc5d8..f2ca7e1f18 100644
+--- a/docs/ui/components/Sidebar/SidebarHead.tsx
++++ b/docs/ui/components/Sidebar/SidebarHead.tsx
+@@ -32,7 +32,7 @@ export const SidebarHead = ({ sidebarActiveGroup }: SidebarHeadProps) => {
+ 
+   return (
+     <div css={sidebarHeadContainerStyle}>
+-      <Search />
++      {/* <Search /> */}
+       <SidebarSingleEntry
+         href="/"
+         title="Home"
+diff --git a/docs/ui/components/Sidebar/SidebarLink.tsx b/docs/ui/components/Sidebar/SidebarLink.tsx
+index 07e06c428a..d0c34fb103 100644
+--- a/docs/ui/components/Sidebar/SidebarLink.tsx
++++ b/docs/ui/components/Sidebar/SidebarLink.tsx
+@@ -63,6 +63,7 @@ export const SidebarLink = ({ info, children }: SidebarLinkProps) => {
+       <LinkBase
+         href={info.href as string}
+         ref={ref}
++        className="section-link"
+         css={[STYLES_LINK, isSelected && STYLES_LINK_ACTIVE]}
+         {...customDataAttributes}>
+         {isSelected && <div css={STYLES_ACTIVE_BULLET} />}
+diff --git a/docs/ui/components/Sidebar/SidebarTitle.tsx b/docs/ui/components/Sidebar/SidebarTitle.tsx
+index 8392d69f5e..6161d8d2b6 100644
+--- a/docs/ui/components/Sidebar/SidebarTitle.tsx
++++ b/docs/ui/components/Sidebar/SidebarTitle.tsx
+@@ -7,7 +7,7 @@ import { CALLOUT } from '../Text';
+ type SidebarTitleProps = PropsWithChildren;
+ 
+ export const SidebarTitle = ({ children }: SidebarTitleProps) => (
+-  <div css={STYLES_TITLE}>
++  <div className='section-header' css={STYLES_TITLE}>
+     <CALLOUT weight="medium">{children}</CALLOUT>
+   </div>
+ );
+diff --git a/docs/ui/components/Sidebar/VersionSelector.tsx b/docs/ui/components/Sidebar/VersionSelector.tsx
+index 8b6ed6aaf0..da13bc36fd 100644
+--- a/docs/ui/components/Sidebar/VersionSelector.tsx
++++ b/docs/ui/components/Sidebar/VersionSelector.tsx
+@@ -16,6 +16,7 @@ const { VERSIONS, LATEST_VERSION, BETA_VERSION } = versions;
+ const STYLES_SELECT = css({
+   ...typography.fontSizes[14],
+   color: theme.text.default,
++  display: 'none',
+   margin: 0,
+   marginTop: spacing[1],
+   padding: `${spacing[2]}px ${spacing[3]}px`,
+diff --git a/docs/ui/components/Text/index.tsx b/docs/ui/components/Text/index.tsx
+index c1a8c37e89..a280e211ce 100644
+--- a/docs/ui/components/Text/index.tsx
++++ b/docs/ui/components/Text/index.tsx
+@@ -64,7 +64,7 @@ export function createTextComponent(Element: TextElement, textStyle?: Serialized
+ 
+     return (
+       <TextElementTag
+-        className={className}
++        className={`sub-section-header${className ? ' ' + className : ''}`}
+         css={[
+           baseTextStyle,
+           textStyle,
+-- 
+2.40.0
+

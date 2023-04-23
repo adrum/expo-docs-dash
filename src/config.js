@@ -2,7 +2,7 @@ var config = {
     "siteUrl" : "https://docs.expo.io",
     "name" : "expo",
     "properName" : "Expo",
-    "index" : "index.html",
+    "index" : ".html",
     "folder" : "/versions/",
     "sectionClass" : "section",
     "sectionHeaderClass" : "section-header",
@@ -11,7 +11,7 @@ var config = {
     "sectionLinkClass" : "section-link",
     "defaultPageType" : "Guides",
     "defaultPageTOC" : "Section",
-    "pageHeader" : "h1[data-heading]",
+    "pageHeader" : "h1",
     "pageSubHeaders" : ["h2[data-heading] .permalink-child"],
     "ignoreSection" : {
         "sectionsArray" : []
