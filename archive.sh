@@ -3,7 +3,14 @@ set -e
 rm -rf Expo.docset
 
 VERSION=`cat src/version`
+
+# create a fresh sqlite db
 cd Contents/Resources
+rm -f docSet.dsidx
+sqlite3 docSet.dsidx 'CREATE TABLE searchIndex(id INTEGER PRIMARY KEY, name TEXT, type TEXT, path TEXT)'
+sqlite3 docSet.dsidx 'CREATE UNIQUE INDEX anchor ON searchIndex (name, type, path)'
+
+# Move docs
 cd Documents
 
 [ -d "127.0.0.1:8000" ] && mv 127.0.0.1\:8000 docs.expo.io

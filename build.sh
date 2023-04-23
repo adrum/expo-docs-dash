@@ -9,8 +9,6 @@ VERSION=`cat src/version`
 
 # create a fresh sqlite db
 cd Contents/Resources
-sqlite3 docSet.dsidx 'CREATE TABLE searchIndex(id INTEGER PRIMARY KEY, name TEXT, type TEXT, path TEXT)'
-sqlite3 docSet.dsidx 'CREATE UNIQUE INDEX anchor ON searchIndex (name, type, path)'
 
 # fetch the whole doc site
 cd Documents
