@@ -16,10 +16,13 @@ $section.each(function(i, elem){
 
     // TODO: create a better config pointer
     var $sectionHeader = $(this).children('.'+config.sectionHeaderClass).text();
+    if ($sectionHeader.indexOf(".css") !== -1) {
+        $sectionHeader = $sectionHeader.substring(0, $sectionHeader.indexOf(".css"));
+    }
     var $subSection = $(this).find('.'+config.subSectionClass);
     $subSection.each(function(i, elem){
-        var $subSectionHeader = $(this).children('.'+config.subSectionHeaderClass).text();
-        var $sectionLink = $(this).children('a'+'.'+config.sectionLinkClass);
+        var $subSectionHeader = $(elem).children('.'+config.subSectionHeaderClass).text();
+        var $sectionLink = $(elem).find('a'+'.'+config.sectionLinkClass);
 
         $sectionLink.each(function(i, elem){
             var page = {};
