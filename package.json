@@ -24,7 +24,8 @@
     "android"
   ],
   "scripts": {
-    "build": "./build.sh"
+    "build": "./build.sh",
+    "archive": "./archive.sh"
   },
   "author": "adrum",
   "license": "ISC",
